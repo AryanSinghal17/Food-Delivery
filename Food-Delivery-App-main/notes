@@ -1,0 +1,142 @@
+/* header .nav.sticky{
+    position:fixed;
+    left:0;
+    top:0;
+    background-color: var(--white);
+    -webkit-transition: all 15ms ease-in-out;
+    -moz-transition: all 15ms ease-in-out;
+    -o-transition: all 15ms ease-in-out;
+    -ms-transition:all 15ms ease-in-out;
+    transition:all 15ms ease-in-out;
+    animation-name: stickyTansition;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-box-shadow: 0 2px 3px rgba(96,96,96,0.1);
+    -moz-box-shadow: 0 2px 3px rgba(96,96,96,0.1);
+    box-shadow: 0 2px 3px rgba(96,96,96,0.1);
+} 
+@keyframes stickyTransition{
+    0%{
+        opacity:0;
+        -webkit-transform: translate3d(0,-100%,0);
+        transform:translate3d(0,-100%,0);
+    }
+    100%{
+        opacity:1;
+        -webkit-transform:none;
+        transform:none;
+    }
+} */
+
+
+
+
+
+
+import React, { useContext } from "react";
+import Header from "../components/Layouts/Header";
+import "../styles/CartStyle.css";
+import burger1 from "../assets/menu/burger-11.jpg";
+import burger2 from "../assets/menu/burger-12.jpg";
+import burger3 from "../assets/menu/burger-13.jpg";
+import { CartContext } from "../components/CartContext";
+
+// const cartItems = [
+//   {
+//     id: 1,
+//     name: "Cheese Burger",
+//     price: "$8",
+//     quantity: 2,
+//     image: burger1,
+//   },
+//   {
+//     id: 2,
+//     name: "Veggie Burger",
+//     price: "$7",
+//     quantity: 1,
+//     image: burger2,
+//   },
+//   {
+//     id: 3,
+//     name: "Double Patty Burger",
+//     price: "$10",
+//     quantity: 3,
+//     image: burger3,
+//   },
+// ];
+
+function Cart() {
+    const { cartItems, removeFromCart } = useContext(CartContext);
+  // calculate total price
+//   const total = cartItems.reduce(
+//     (sum, item) => sum + parseFloat(item.price.replace("$", "")) * item.quantity,
+//     0
+//   );
+
+//   return (
+//     <>
+//       <Header />
+//       <div className="cart container mt-5 mb-5">
+//         <h1 className="cart-title text-center mb-4">Your Cart</h1>
+//         <div className="row">
+//           {cartItems.map((item) => (
+//             <div key={item.id} className="col-md-6 col-lg-4 mb-4">
+//               <div className="card cart-card h-100">
+//                 <img
+//                   src={item.image}
+//                   alt={item.name}
+//                   className="card-img-top"
+//                   style={{ height: "220px", objectFit: "cover" }}
+//                 />
+//                 <div className="card-body">
+//                   <h5 className="card-title">{item.name}</h5>
+//                   <p className="card-text">Price: {item.price}</p>
+//                   <p className="card-text">Quantity: {item.quantity}</p>
+//                   <button className="btn btn-danger w-100">Remove</button>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+
+//         <div className="cart-summary text-center mt-4">
+//           <h4>Total: ${total.toFixed(2)}</h4>
+//           <button className="btn btn-success mt-3">Proceed to Checkout</button>
+//         </div>
+//       </div>
+//     </>
+//   );
+
+
+
+ <>
+      <Header />
+      <div className="container mt-5 mb-5">
+        <h2>Your Cart</h2>
+        {cartItems.length === 0 ? (
+          <p>Your cart is empty.</p>
+        ) : (
+          <ul className="list-group">
+            {cartItems.map((item) => (
+              <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                  {item.name} (x{item.quantity}) - ${item.price * item.quantity}
+                </div>
+                <button
+                  className="btn btn-danger btn-sm"
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
+
+}
+
+export default Cart;

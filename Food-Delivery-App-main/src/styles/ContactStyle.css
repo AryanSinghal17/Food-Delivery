@@ -1,0 +1,46 @@
+.contact{
+    height:100vh;
+    width:100%;
+    /* background :url("../assets/parallax/bg.jpg") no-repeat center center; */
+}
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--light-black);
+}
+
+.contact-intro {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--light-black);
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  width: 100%;
+  margin-top: 0.3rem;
+}
+
+.contact-form button {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+}
